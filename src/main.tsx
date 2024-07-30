@@ -1,10 +1,16 @@
-import React from 'react';
+import { router } from '@/routes';
 import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
 
-import App from './App';
+import { GlobalStyleProvider, SWRProvider } from '@/components/Root';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+const App = () => (
+  <>
+    <GlobalStyleProvider />
+    <SWRProvider>
+      <RouterProvider router={router} />
+    </SWRProvider>
+  </>
 );
+
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
